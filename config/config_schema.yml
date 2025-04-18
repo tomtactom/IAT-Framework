@@ -1,16 +1,45 @@
-# Beispiel‑Schema für IAT‑Config
+# config/config_schema.yml
+# --------------------------------
+# Globale Einstellungen
+experiment:
+  name: "Demo IAT"
+  subject_prefix: "subj_"
+  output_folder: "../results"
+
+# Definition der Targets (2 Kategorien)
 targets:
-  - name: TARGET1
-    stimuli: words/target1.txt
-  - name: TARGET2
-    stimuli: words/target2.txt
+  - name: "TARGET1"
+    type: "word"             # auch: "image" oder "audio"
+    stimuli_list: "../stimuli/words/target1.txt"
+  - name: "TARGET2"
+    type: "word"
+    stimuli_list: "../stimuli/words/target2.txt"
+
+# Definition der Attributes (2 Kategorien)
 attributes:
-  - name: POSITIVE
-    stimuli: words/positive.txt
-  - name: NEGATIVE
-    stimuli: words/negative.txt
+  - name: "POSITIVE"
+    type: "word"
+    stimuli_list: "../stimuli/words/positive.txt"
+  - name: "NEGATIVE"
+    type: "word"
+    stimuli_list: "../stimuli/words/negative.txt"
+
+# Versuchsanordnung: Blocks und deren Paarungen
 blocks:
-  - name: compatible
-    pairing: [TARGET1, POSITIVE]
-  - name: incompatible
-    pairing: [TARGET1, NEGATIVE]
+  - name: "compatible"
+    pairing:
+      - TARGET1
+      - POSITIVE
+    n_practice: 20
+    n_test: 40
+  - name: "incompatible"
+    pairing:
+      - TARGET1
+      - NEGATIVE
+    n_practice: 20
+    n_test: 40
+
+# Intertrial-Interval (ms)
+timing:
+  iti_min: 250
+  iti_max: 750
