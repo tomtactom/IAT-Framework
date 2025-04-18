@@ -1,0 +1,16 @@
+# Beispiel‑Schema für IAT‑Config
+targets:
+  - name: TARGET1
+    stimuli: words/target1.txt
+  - name: TARGET2
+    stimuli: words/target2.txt
+attributes:
+  - name: POSITIVE
+    stimuli: words/positive.txt
+  - name: NEGATIVE
+    stimuli: words/negative.txt
+blocks:
+  - name: compatible
+    pairing: [TARGET1, POSITIVE]
+  - name: incompatible
+    pairing: [TARGET1, NEGATIVE]
